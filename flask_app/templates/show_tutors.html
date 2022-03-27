@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/flask_app/static/css/styles.css">
+</head>
+
+<body>
+    <nav class="d-flex justify-content-between align-items-center col-12">
+        <div class="d-flex col-6 justify-content-between"></div>
+        <div class="d-flex col-5 justify-content-between p-3">
+            <a href="/dashboard" class="btn btn-primary">Dashboard</a>
+            <a href="/new/tutor" class="btn btn-primary">Add Tutor</a>
+            <a href="/new/student" class="btn btn-primary">Add Student</a>
+            <a href="/view/students" class="btn btn-primary">View Students</a>
+        </div>
+    </nav>
+    <div class="col-12 justify-content-center">
+        <h3>Tutors</h3>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tutor in tutors %}
+                <tr>
+                    <td>{{tutor.first_name}} {{tutor.last_name}}</td>
+                    <td><a href="mailto:{{tutor.email}}">{{tutor.email}}</a></td>
+                    <td>{{tutor.phone}}</td>
+                    <td>${{tutor.rate}}.00</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
